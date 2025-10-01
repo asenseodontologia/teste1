@@ -83,4 +83,20 @@ if(id){
         const horaSplit = padronizarHora(agendamento.hora).split(":");
         const start = new Date(dataSplit[2],dataSplit[1]-1,dataSplit[0],horaSplit[0],horaSplit[1]);
         const end = new Date(start.getTime()+30*60*1000);
-        const url
+        const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=Consulta Dentista - ${agendamento.paciente}&dates=${formatDateLocal(start)}/${formatDateLocal(end)}&details=Agendamento confirmado&sf=true&output=xml`;
+        window.open(url,"_blank");
+      };
+    } else {
+      tituloEl.textContent = "Agendamento não encontrado";
+    }
+  }).catch(err => {
+    console.error(err);
+    tituloEl.textContent = "Erro ao carregar agendamento";
+  });
+} else {
+  tituloEl.textContent = "Nenhum ID informado";
+}
+</script>
+
+</body>
+</html>
