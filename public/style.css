@@ -29,7 +29,7 @@ body {
   max-width: 200px;
   width: 100%;
   height: auto;
-  margin-bottom: 15px; /* aumento para separar melhor do título */
+  margin-bottom: 5px; /* voltou pro antigo */
 }
 
 h2 {
@@ -46,7 +46,7 @@ p {
 
 button {
   padding: 12px 22px;
-  margin: 10px 0; /* mantém espaçamento uniforme */
+  margin: 10px 5px; /* voltou pro antigo */
   border: none;
   border-radius: 8px;
   color: #fff;
