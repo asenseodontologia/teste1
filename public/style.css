@@ -1,0 +1,99 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #CDBBA3, #CDBBA3);
+  display: flex;
+  justify-content: center;      
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 10px;
+}
+
+.card {
+  background: #F2E3D5;
+  padding: 30px 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  text-align: center;  
+  width: 100%;
+  max-width: 360px;
+  transition: transform 0.2s ease;
+  font-family: Avantgarde, sans-serif;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.logo {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 15px; /* aumento para separar melhor do título */
+}
+
+h2 {
+  color: #a05c42;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
+}
+
+p {
+  margin: 8px 0;
+  color: #444;
+  font-size: 1rem;
+}
+
+button {
+  padding: 12px 22px;
+  margin: 10px 0; /* mantém espaçamento uniforme */
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s, transform 0.2s;
+  width: 100%;
+  max-width: 260px;
+  font-family: Avantgarde, sans-serif;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.whatsapp {
+  background-color: #225959;
+}
+
+.whatsapp:hover {
+  background-color: #0D0D0D;
+}
+
+.agenda {
+  background-color: #D99C9C;
+}
+
+.agenda:hover {
+  background-color: #D97E7E;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .card {
+    padding: 20px 15px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px 18px;
+  }
+}

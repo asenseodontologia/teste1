@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel de Agendamentos</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h2>Cadastrar Agendamento</h2>
+
+<label>Paciente:</label>
+<input type="text" id="paciente"><br>
+<label>Data (dd/mm/aaaa):</label>
+<input type="text" id="data"><br>
+<label>Hora (hh:mm):</label>
+<input type="text" id="hora"><br>
+<label>ID do documento (opcional):</label>
+<input type="text" id="id"><br>
+
+<button id="btnSalvar">Salvar</button>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+import { getFirestore, doc, setDoc, collection } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAqBcZb_2oaGwImHz-7nGQw5vYjU4zbn7s",
+  authDomain: "agendamentos-odontologia.firebaseapp.com",
+  projectId: "agendamentos-odontologia",
+  storageBucket: "agendamentos-odontologia.appspot.com",
+  messagingSenderId: "886953800275",
+  appId: "1:886953800275:web:d2072f6d02ba35a7550ca6"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+document.getElementById("btnSalvar").onclick = async () => {
+  const paciente = document.getElementById("paciente").value;
+  const data = document.getElementById("data").value;
+  const hora = document.getElementById("hora").value;
+  const idInput = document.getElementById("id").value;
+  const docRef = idInput ? doc(db, "agendamentos", idInput) : doc(collection(db, "agendamentos"));
+
+  if(!paciente || !data || !hora){
+    alert("Preencha todos os campos!");
+    return;
+  }
+
+  try {
+    await setDoc(docRef, { paciente, data, hora });
+    alert("Agendamento salvo com sucesso! ID: " + docRef.id);
+    document.getElementById("paciente").value = "";
+    document.getElementById("data").value = "";
+    document.getElementById("hora").value = "";
+    document.getElementById("id").value = "";
+  } catch(err){
+    alert("Erro ao salvar: " + err);
+  }
+};
+</script>
+</body>
+</html>
