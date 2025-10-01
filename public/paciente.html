@@ -34,7 +34,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const clinicaWhats = "+5519992547868";
+// Telefones dos setores
+const whatsAppMap = {
+  isa: "+5519992547868", // recepção (Isa)
+  lua: "+5519987687285"  // CRC (Lua)
+};
+
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
@@ -68,8 +73,9 @@ if(id){
       horaEl.textContent = "Horário: " + agendamento.hora;
 
       btnWhats.onclick = () => {
-        const mensagem = `Olá, boa tarde, eu ${agendamento.paciente}, confirmo meu agendamento para o dia ${agendamento.data} às ${agendamento.hora}.`;
-        window.open(`https://wa.me/${clinicaWhats}?text=${encodeURIComponent(mensagem)}`,"_blank");
+        const numero = whatsAppMap[agendamento.setor] || whatsAppMap["isa"];
+        const mensagem = `Olá, eu ${agendamento.paciente}, confirmo meu agendamento para o dia ${agendamento.data} às ${agendamento.hora}.`;
+        window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,"_blank");
       };
 
       btnAgenda.onclick = () => {
@@ -77,20 +83,4 @@ if(id){
         const horaSplit = padronizarHora(agendamento.hora).split(":");
         const start = new Date(dataSplit[2],dataSplit[1]-1,dataSplit[0],horaSplit[0],horaSplit[1]);
         const end = new Date(start.getTime()+30*60*1000);
-        const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=Consulta Dentista - ${agendamento.paciente}&dates=${formatDateLocal(start)}/${formatDateLocal(end)}&details=Agendamento confirmado&sf=true&output=xml`;
-        window.open(url,"_blank");
-      };
-    } else {
-      tituloEl.textContent = "Agendamento não encontrado";
-    }
-  }).catch(err => {
-    console.error(err);
-    tituloEl.textContent = "Erro ao carregar agendamento";
-  });
-} else {
-  tituloEl.textContent = "Nenhum ID informado";
-}
-</script>
-
-</body>
-</html>
+        const url

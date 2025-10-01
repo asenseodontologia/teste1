@@ -21,10 +21,10 @@
 <label>ID do documento (opcional):</label>
 <input type="text" id="id"><br>
 
-<label>Enviar confirmação para:</label>
-<select id="whatsNumero">
-  <option value="recepcao">Recepção</option>
-  <option value="lua">Lua/CRC</option>
+<label>Setor:</label>
+<select id="setor">
+  <option value="isa">Recepção (Isa)</option>
+  <option value="lua">CRC (Lua)</option>
 </select><br><br>
 
 <button id="btnSalvar">Salvar</button>
@@ -49,24 +49,23 @@ document.getElementById("btnSalvar").onclick = async () => {
   const paciente = document.getElementById("paciente").value;
   const data = document.getElementById("data").value;
   const hora = document.getElementById("hora").value;
+  const setor = document.getElementById("setor").value;
   const idInput = document.getElementById("id").value;
-  const destinatario = document.getElementById("whatsNumero").value;
+
+  const docRef = idInput ? doc(db, "agendamentos", idInput) : doc(collection(db, "agendamentos"));
 
   if(!paciente || !data || !hora){
     alert("Preencha todos os campos!");
     return;
   }
 
-  const docRef = idInput ? doc(db, "agendamentos", idInput) : doc(collection(db, "agendamentos"));
-
   try {
-    await setDoc(docRef, { paciente, data, hora, destinatario });
+    await setDoc(docRef, { paciente, data, hora, setor });
     alert("Agendamento salvo com sucesso! ID: " + docRef.id);
     document.getElementById("paciente").value = "";
     document.getElementById("data").value = "";
     document.getElementById("hora").value = "";
     document.getElementById("id").value = "";
-    document.getElementById("whatsNumero").value = "recepcao";
   } catch(err){
     alert("Erro ao salvar: " + err);
   }
