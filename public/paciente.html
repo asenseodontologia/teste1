@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Confirmação de Agendamento</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="logo.png"> <!-- ✅ Aqui sim -->
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Ícones Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -16,88 +19,107 @@
   <p id="paciente"></p>
   <p id="data"></p>
   <p id="hora"></p>
-  <button class="whatsapp" id="btnWhats">Confirmar pelo WhatsApp</button>      
-  <button class="agenda" id="btnAgenda">Adicionar ao Google Agenda</button>
-</div> 
+
+  <button class="whatsapp" id="btnWhats">
+    <i class="fa-brands fa-whatsapp"></i>
+    Confirmar pelo WhatsApp
+  </button>
+
+  <button class="agenda" id="btnAgenda">
+    <i class="fa-brands fa-google"></i>
+    Adicionar ao Google Agenda
+  </button>
+
+  <div class="social-buttons">
+    <button class="icon-btn maps" title="Localização">
+      <i class="fa-solid fa-location-dot"></i>
+    </button>
+    <button class="icon-btn insta" title="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </button>
+    <button class="icon-btn site" title="Site">
+      <i class="fa-solid fa-globe"></i>
+    </button>
+  </div>
+</div>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+  import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAqBcZb_2oaGwImHz-7nGQw5vYjU4zbn7s",
-  authDomain: "agendamentos-odontologia.firebaseapp.com",
-  projectId: "agendamentos-odontologia",
-  storageBucket: "agendamentos-odontologia.appspot.com",
-  messagingSenderId: "886953800275",
-  appId: "1:886953800275:web:d2072f6d02ba35a7550ca6"
-};
+  const firebaseConfig = {
+    apiKey: "AIzaSyAqBcZb_2oaGwImHz-7nGQw5vYjU4zbn7s",
+    authDomain: "agendamentos-odontologia.firebaseapp.com",
+    projectId: "agendamentos-odontologia",
+    storageBucket: "agendamentos-odontologia.appspot.com",
+    messagingSenderId: "886953800275",
+    appId: "1:886953800275:web:d2072f6d02ba35a7550ca6"
+  };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
 
-// Telefones dos setores
-const whatsAppMap = {
-  isa: "+5519992547868", // recepção (Isa)
-  lua: "+5519987687285"  // CRC (Lua)
-};
+  const whatsAppMap = {
+    isa: "+5519992547868",
+    lua: "+5519987687285"
+  };
 
-const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
 
-const card = document.getElementById("agendamentoCard");
-const tituloEl = card.querySelector("h2");
-const pacienteEl = document.getElementById("paciente");
-const dataEl = document.getElementById("data");
-const horaEl = document.getElementById("hora");
-const btnWhats = document.getElementById("btnWhats");
-const btnAgenda = document.getElementById("btnAgenda");
+  const card = document.getElementById("agendamentoCard");
+  const tituloEl = card.querySelector("h2");
+  const pacienteEl = document.getElementById("paciente");
+  const dataEl = document.getElementById("data");
+  const horaEl = document.getElementById("hora");
+  const btnWhats = document.getElementById("btnWhats");
+  const btnAgenda = document.getElementById("btnAgenda");
 
-const formatDateLocal = (d) => {
-  const ano = d.getFullYear();
-  const mes = String(d.getMonth()+1).padStart(2,"0");
-  const dia = String(d.getDate()).padStart(2,"0");
-  const hora = String(d.getHours()).padStart(2,"0");
-  const min = String(d.getMinutes()).padStart(2,"0");
-  return `${ano}${mes}${dia}T${hora}${min}00`;
-};
+  const formatDateLocal = (d) => {
+    const ano = d.getFullYear();
+    const mes = String(d.getMonth()+1).padStart(2,"0");
+    const dia = String(d.getDate()).padStart(2,"0");
+    const hora = String(d.getHours()).padStart(2,"0");
+    const min = String(d.getMinutes()).padStart(2,"0");
+    return `${ano}${mes}${dia}T${hora}${min}00`;
+  };
 
-const padronizarHora = (horaString) => horaString.replace("h",":").replace(/[^0-9:]/g,"");
+  const padronizarHora = (horaString) => horaString.replace("h",":").replace(/[^0-9:]/g,"");
 
-if(id){
-  const docRef = doc(db,"agendamentos",id);
-  getDoc(docRef).then(docSnap => {
-    if(docSnap.exists()){
-      const agendamento = docSnap.data();
-      tituloEl.textContent = "Confirmação de Agendamento";
-      pacienteEl.textContent = "Paciente: " + agendamento.paciente;
-      dataEl.textContent = "Data: " + agendamento.data;
-      horaEl.textContent = "Horário: " + agendamento.hora;
+  if(id){
+    const docRef = doc(db,"agendamentos",id);
+    getDoc(docRef).then(docSnap => {
+      if(docSnap.exists()){
+        const agendamento = docSnap.data();
+        tituloEl.textContent = "Confirmação de Agendamento";
+        pacienteEl.textContent = "Paciente: " + agendamento.paciente;
+        dataEl.textContent = "Data: " + agendamento.data;
+        horaEl.textContent = "Horário: " + agendamento.hora;
 
-      btnWhats.onclick = () => {
-        const numero = whatsAppMap[agendamento.setor] || whatsAppMap["isa"];
-        const mensagem = `Olá, eu ${agendamento.paciente}, confirmo meu agendamento para o dia ${agendamento.data} às ${agendamento.hora}.`;
-        window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,"_blank");
-      };
+        btnWhats.onclick = () => {
+          const numero = whatsAppMap[agendamento.setor] || whatsAppMap["isa"];
+          const mensagem = `Olá, eu ${agendamento.paciente}, confirmo meu agendamento para o dia ${agendamento.data} às ${agendamento.hora}.`;
+          window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,"_blank");
+        };
 
-      btnAgenda.onclick = () => {
-        const dataSplit = agendamento.data.split("/");
-        const horaSplit = padronizarHora(agendamento.hora).split(":");
-        const start = new Date(dataSplit[2],dataSplit[1]-1,dataSplit[0],horaSplit[0],horaSplit[1]);
-        const end = new Date(start.getTime()+30*60*1000);
-        const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=Consulta Dentista - ${agendamento.paciente}&dates=${formatDateLocal(start)}/${formatDateLocal(end)}&details=Agendamento confirmado&sf=true&output=xml`;
-        window.open(url,"_blank");
-      };
-    } else {
-      tituloEl.textContent = "Agendamento não encontrado";
-    }
-  }).catch(err => {
-    console.error(err);
-    tituloEl.textContent = "Erro ao carregar agendamento";
-  });
-} else {
-  tituloEl.textContent = "Nenhum ID informado";
-}
+        btnAgenda.onclick = () => {
+          const dataSplit = agendamento.data.split("/");
+          const horaSplit = padronizarHora(agendamento.hora).split(":");
+          const start = new Date(dataSplit[2],dataSplit[1]-1,dataSplit[0],horaSplit[0],horaSplit[1]);
+          const end = new Date(start.getTime()+30*60*1000);
+          const url = `https://www.google.com/calendar/render?action=TEMPLATE&text=Consulta Dentista - ${agendamento.paciente}&dates=${formatDateLocal(start)}/${formatDateLocal(end)}&details=Agendamento confirmado&sf=true&output=xml`;
+          window.open(url,"_blank");
+        };
+      } else {
+        tituloEl.textContent = "Agendamento não encontrado";
+      }
+    }).catch(err => {
+      console.error(err);
+      tituloEl.textContent = "Erro ao carregar agendamento";
+    });
+  } else {
+    tituloEl.textContent = "Nenhum ID informado";
+  }
 </script>
 
 </body>
