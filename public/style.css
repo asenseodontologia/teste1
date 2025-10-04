@@ -102,45 +102,6 @@ button i {
   font-size: 18px;
 }
 
-/* Botões de redes sociais pequenos */
-.social-buttons {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-}
-
-.icon-btn {
-  background-color: #CDBBA3;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.icon-btn:hover {
-  transform: scale(1.1);
-}
-
-/* Cores específicas de cada ícone */
-.icon-btn.maps {
-  background-color: #4A90E2;
-}
-
-.icon-btn.insta {
-  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-}
-
-.icon-btn.site {
-  background-color: #A05C42;
-}
 /* ============================== */
 /* BOTÕES SOCIAIS REDONDOS COLORIDOS */
 /* ============================== */
