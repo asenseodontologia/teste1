@@ -4,30 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Painel de Agendamentos</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style2.css">
 </head>
 <body>
-<h2>Cadastrar Agendamento</h2>
 
-<label>Paciente:</label>
-<input type="text" id="paciente"><br>
+<div class="container">
+  <h2>Cadastrar Agendamento</h2>
 
-<label>Data (dd/mm/aaaa):</label>
-<input type="text" id="data"><br>
+  <label>Paciente:</label>
+  <input type="text" id="paciente">
 
-<label>Hora (hh:mm):</label>
-<input type="text" id="hora"><br>
+  <label>Data (dd/mm/aaaa):</label>
+  <input type="text" id="data">
 
-<label>ID do documento (opcional):</label>
-<input type="text" id="id"><br>
+  <label>Hora (hh:mm):</label>
+  <input type="text" id="hora">
 
-<label>Setor:</label>
-<select id="setor">
-  <option value="isa">Recepção (Isa)</option>
-  <option value="lua">CRC (Lua)</option>
-</select><br><br>
+  <label>ID do documento (opcional):</label>
+  <input type="text" id="id">
 
-<button id="btnSalvar">Salvar</button>
+  <label>Setor:</label>
+  <select id="setor">
+    <option value="isa">Recepção (Isa)</option>
+    <option value="lua">CRC (Lua)</option>
+  </select>
+
+  <button id="btnSalvar">Salvar</button>
+</div>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
