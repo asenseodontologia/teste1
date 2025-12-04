@@ -148,7 +148,7 @@ button i {
 
 /* Cores de cada botão */
 .icon-btn.maps {
-  background-color: #4285F4; /* Azul Google Maps */
+  background: linear-gradient(45deg, #3b1de0, #2c16ca, #1d0fb4, #0f079d, #000087); /* Azul Google Maps */
 }
 
 .icon-btn.insta {
@@ -156,5 +156,5 @@ button i {
 }
 
 .icon-btn.site {
-  background-color: #A05C42; /* Tom marrom Asense */
+  background-color: (45deg, #814942, #613732, #412421, #201211, #000000); /* Tom marrom Asense */
 }
