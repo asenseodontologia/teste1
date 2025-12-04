@@ -2,7 +2,7 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #CDBBA3, #CDBBA3);
   display: flex;
-  justify-content: center;      
+  justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
@@ -14,7 +14,7 @@ body {
   padding: 30px 20px;
   border-radius: 16px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-  text-align: center;  
+  text-align: center;
   width: 100%;
   max-width: 360px;
   transition: transform 0.2s ease;
@@ -29,7 +29,7 @@ body {
   max-width: 200px;
   width: 100%;
   height: auto;
-  margin-bottom: 5px; /* voltou pro antigo */
+  margin-bottom: 5px;
 }
 
 h2 {
@@ -46,7 +46,7 @@ p {
 
 button {
   padding: 12px 22px;
-  margin: 10px 5px; /* voltou pro antigo */
+  margin: 10px 5px;
   border: none;
   border-radius: 8px;
   color: #fff;
@@ -70,12 +70,12 @@ button:hover {
   background-color: #0D0D0D;
 }
 
-.whatsappcancelamento{
- background-color: #d81107;
+.whatsappcancelamento {
+  background-color: #d81107;
 }
 
-.whatsappcancelamento:hover{
- background-color: #440000;
+.whatsappcancelamento:hover {
+  background-color: #440000;
 }
 
 .agenda {
@@ -105,18 +105,14 @@ button:hover {
     padding: 10px 18px;
   }
 }
+
 button i {
   margin-right: 8px;
   font-size: 18px;
 }
 
-
 /* ============================== */
-/* BOTÕES SOCIAIS REDONDOS COLORIDOS */
-/* ============================== */
-
-/* ============================== */
-/* BOTÕES SOCIAIS REDONDOS E COLORIDOS */
+/* BOTÕES SOCIAIS REDONDOS */
 /* ============================== */
 
 .social-buttons {
@@ -127,13 +123,11 @@ button i {
   gap: 18px;
 }
 
-/* Remove cor padrão dos links */
 .social-buttons a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Botões menores */
 .icon-btn {
   width: 45px;
   height: 45px;
@@ -141,28 +135,28 @@ button i {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 20px; /* tamanho do ícone */
+  font-size: 20px;
   color: #fff;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 3px 6px rgba(0,0,0,0.2);
 }
 
-/* Efeito ao passar o mouse */
 .icon-btn:hover {
   transform: scale(1.1);
   box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
-/* Cores de cada botão */
+/* Cores */
+
 .icon-btn.maps {
-  background: linear-gradient(45deg, #0FC2C0, #0CABA8, #008F8C, #015958, #023535); /* Azul Google Maps */
+  background: linear-gradient(45deg, #0FC2C0, #0CABA8, #008F8C, #015958, #023535);
 }
 
 .icon-btn.insta {
-  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); 
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
 }
 
 .icon-btn.site {
-  background-color: linear-gradient(45deg, #814942, #613732, #412421, #201211, #000000); /* Tom marrom Asense */
+  background: linear-gradient(45deg, #814942, #613732, #412421, #201211, #000000);
 }
