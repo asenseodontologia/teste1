@@ -116,7 +116,7 @@
 
         btnWhatscancelamento.onclick = () => {
           const numero = whatsAppMap[agendamento.setor] || whatsAppMap["isa"];
-          const mensagem = `Olá, eu ${agendamento.paciente}, desmarco meu agendamento para o dia ${agendamento.data} às ${agendamento.hora}.`;
+          const mensagem = `Olá, eu ${agendamento.paciente}, desejo reagendar minha consulta do dia ${agendamento.data} às ${agendamento.hora}.`;
           window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,"_blank");
         };
 
