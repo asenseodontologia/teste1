@@ -70,6 +70,14 @@ button:hover {
   background-color: #0D0D0D;
 }
 
+.whatsappcancelamento{
+ background-color: #d81107;
+}
+
+.whatsappcancelamento:hover{
+ background-color: #440000;
+}
+
 .agenda {
   background-color: #D99C9C;
 }
@@ -148,13 +156,13 @@ button i {
 
 /* Cores de cada botão */
 .icon-btn.maps {
-  background: linear-gradient(45deg, #3b1de0, #2c16ca, #1d0fb4, #0f079d, #000087); /* Azul Google Maps */
+  background: linear-gradient(45deg, #0FC2C0, #0CABA8, #008F8C, #015958, #023535); /* Azul Google Maps */
 }
 
 .icon-btn.insta {
-  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5); 
 }
 
 .icon-btn.site {
-  background-color: (45deg, #814942, #613732, #412421, #201211, #000000); /* Tom marrom Asense */
+  background-color: linear-gradient(45deg, #814942, #613732, #412421, #201211, #000000); /* Tom marrom Asense */
 }

@@ -25,6 +25,12 @@
     Confirmar pelo WhatsApp
   </button>
 
+   <button class="whatsappcancelamento" id="btnWhatscancelamento">
+  <i class="fa-brands fa-whatsapp"></i>
+  Desmarcar pelo WhatsApp
+  </button>
+
+
   <button class="agenda" id="btnAgenda">
     <i class="fa-brands fa-google"></i>
     Adicionar ao Google Agenda
@@ -78,6 +84,7 @@
   const dataEl = document.getElementById("data");
   const horaEl = document.getElementById("hora");
   const btnWhats = document.getElementById("btnWhats");
+  const btnWhatscancelamento = document.getElementById("btnWhatscancelamento");
   const btnAgenda = document.getElementById("btnAgenda");
 
   const formatDateLocal = (d) => {
@@ -104,6 +111,12 @@
         btnWhats.onclick = () => {
           const numero = whatsAppMap[agendamento.setor] || whatsAppMap["isa"];
           const mensagem = `Olá, eu ${agendamento.paciente}, confirmo meu agendamento para o dia ${agendamento.data} às ${agendamento.hora}.`;
+          window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,"_blank");
+        };
+
+        btnWhatscancelamento.onclick = () => {
+          const numero = whatsAppMap[agendamento.setor] || whatsAppMap["isa"];
+          const mensagem = `Olá, eu ${agendamento.paciente}, desmarco meu agendamento para o dia ${agendamento.data} às ${agendamento.hora}.`;
           window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,"_blank");
         };
 
