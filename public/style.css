@@ -71,11 +71,11 @@ button:hover {
 }
 
 .whatsappcancelamento {
-  background-color: #d81107;
+  background-color: #E5515C;
 }
 
 .whatsappcancelamento:hover {
-  background-color: #440000;
+  background-color: #CC4852;
 }
 
 .agenda {
@@ -158,5 +158,5 @@ button i {
 }
 
 .icon-btn.site {
-  background: linear-gradient(45deg, #814942, #613732, #412421, #201211, #000000);
+  background: linear-gradient(45deg, #814942, #613732, #412421, #201211, #221110);
 }
